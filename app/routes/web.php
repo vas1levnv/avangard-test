@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainPageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
@@ -14,9 +15,13 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function() {
+Route::get('/', [MainPageController::class, 'index']);
+
+Route::get('/welcome', function() {
     return view('welcome');
 });
+
+
 
 Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('post.create');
